@@ -1,0 +1,75 @@
+@import 'antd/dist/reset.css';
+
+:root {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+body {
+  margin: 0;
+  background-color: #f8f9fa;
+}
+
+/* Custom pills for filter bar */
+.custom-pill-select .ant-select-selector {
+  border-radius: 8px !important;
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  font-weight: 600 !important;
+  padding: 0 16px !important;
+  border: 1px solid transparent !important;
+  transition: all 0.2s;
+}
+
+.custom-pill-select:hover .ant-select-selector {
+  background-color: #e5e7eb !important;
+}
+
+/* Table overrides to match modern mockup */
+.custom-project-table {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.custom-project-table .ant-table {
+  background: white;
+}
+
+.custom-project-table .ant-table-thead > tr > th {
+  background: white !important;
+  color: #6b7280;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  padding: 16px 24px;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.custom-project-table .ant-table-thead > tr > th::before {
+  display: none !important;
+}
+
+.custom-project-table .ant-table-tbody > tr > td {
+  padding: 20px 24px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #111827;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.custom-project-table .ant-table-tbody > tr:hover > td {
+  background: #f9fafb !important;
+}
+
+/* Custom progress bar styles */
+.mockup-progress .ant-progress-inner {
+  background-color: #e5e7eb;
+}
+
+/* Modern buttons */
+.ant-btn-primary {
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1) !important;
+}
