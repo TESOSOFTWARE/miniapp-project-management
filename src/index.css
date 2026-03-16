@@ -73,3 +73,9 @@ body {
 .ant-btn-primary {
   box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1) !important;
 }
+
+/* Clickable project title hover */
+.project-title-link:hover {
+  text-decoration: underline;
+  color: #3730a3 !important;
+}

@@ -6,6 +6,7 @@ import {
   ExclamationCircleFilled,
   MoreOutlined
 } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import { formatDisplayDate, isDateOverdue } from '../utils/dateUtils';
 
 interface ProjectListTableProps {
@@ -13,15 +14,22 @@ interface ProjectListTableProps {
 }
 
 const ProjectListTable: React.FC<ProjectListTableProps> = ({ data }) => {
+  const navigate = useNavigate();
+
   const columns = useMemo(() => {
     return [
       {
         title: 'PROJECT NAME',
         dataIndex: 'ProjectName',
         key: 'ProjectName',
-        render: (text: string, record: any) => (
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontWeight: 800, color: '#111827', fontSize: 14 }}>{text || 'Untitled Project'}</span>
+        render: (text: string, record: any, index: number) => (
+          <div 
+            style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
+            onClick={() => navigate(`/project/${record._originalIndex ?? index}`)}
+          >
+            <span style={{ fontWeight: 800, color: '#4f46e5', fontSize: 14, transition: 'color 0.2s' }} className="project-title-link">
+              {text || 'Untitled Project'}
+            </span>
             <span style={{ color: '#6b7280', fontSize: 13 }}>
               {record.Department || 'Engineering'} • #{record.ProjectId || 'PRJ-000'}
             </span>
@@ -42,9 +50,9 @@ const ProjectListTable: React.FC<ProjectListTableProps> = ({ data }) => {
             if (!isNaN(parsed)) percent = Math.round(parsed);
           }
           
-          let strokeColor = '#4f46e5'; // Purple for normal
-          if (percent === 100) strokeColor = '#10b981'; // Green for complete
-          if (record.Priority === 'Urgent' || record.Priority === 'High') strokeColor = '#ef4444'; // Red for delayed/urgent
+          let strokeColor = '#4f46e5';
+          if (percent === 100) strokeColor = '#10b981';
+          if (record.Priority === 'Urgent' || record.Priority === 'High') strokeColor = '#ef4444';
 
           return (
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, width: 140 }}>
@@ -123,7 +131,6 @@ const ProjectListTable: React.FC<ProjectListTableProps> = ({ data }) => {
         title: 'PAYMENT STATUS',
         key: 'payment',
         render: (_: any, record: any) => {
-           // Mocking payment status for visual exactly like mockup
            const priority = record.Priority || '';
            
            if (priority === 'High' || priority === 'Urgent') {
@@ -172,7 +179,7 @@ const ProjectListTable: React.FC<ProjectListTableProps> = ({ data }) => {
         )
       }
     ];
-  }, []);
+  }, [navigate]);
 
   return (
     <Table 

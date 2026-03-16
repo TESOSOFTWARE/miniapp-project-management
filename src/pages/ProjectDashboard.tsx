@@ -20,7 +20,7 @@ const ProjectDashboard: React.FC = () => {
   const searchQuery = data?.filters?.searchQuery || '';
 
   const dataSource = useMemo(() => {
-    let source = ProjectSummary || [];
+    let source = (ProjectSummary || []).map((item: any, idx: number) => ({ ...item, _originalIndex: idx }));
     
     // Filter by project title search query
     if (searchQuery) {
